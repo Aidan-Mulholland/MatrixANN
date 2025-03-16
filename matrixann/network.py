@@ -1,4 +1,5 @@
-from activation_functions import sigmoid_derivative
+import numpy as np
+from .activation_functions import sigmoid_derivative
 
 
 class Network():
@@ -15,7 +16,7 @@ class Network():
             # Updating output to store layer output which is then used for the next layer
             previous_output = layer.output
         # Output the result
-        print("OUTPUT", previous_output)
+        return previous_output
 
     def backwardPass(self, inputs, expected_output):
         num_layers = len(self.layers)
@@ -40,3 +41,5 @@ class Network():
             inputs = inputs if l == 0 else self.layers[l - 1].output
             layer.weights += self.learning_rate * np.outer(layer.delta, inputs)
             layer.biases += self.learning_rate * layer.delta
+
+        return output_error

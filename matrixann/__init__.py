@@ -1,3 +1,3 @@
-from activation_functions import *
-from layers import *
-from network import *
+from .activation_functions import *
+from .layers import *
+from .network import *
